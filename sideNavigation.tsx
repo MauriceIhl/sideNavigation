@@ -9,6 +9,15 @@ import {
 import { useState } from "react";
 import Link from "next/link"; // use "react-router-dom" for react-router
 
+const sampleListLinks = [
+    { label: "Home", link: "/", icon: <HomeIcon className="h-6 w-6 text-white" /> },
+    { label: "Settings", link: "/", icon: <Cog6ToothIcon className="h-6 w-6 text-white" /> },
+    { label: "Files", link: "/", icon: <FolderIcon className="h-6 w-6 text-white" /> },
+    { label: "Messages", link: "/", icon: <EnvelopeIcon className="h-6 w-6 text-white" /> },
+  ]
+
+const sampleEndContent = { label: "Some User", link: "/", icon: <UserIcon className="h-6 w-6 text-black" /> }
+
 interface SideNavigationProps {
   shadow?: string;
   h?: string;
@@ -28,7 +37,7 @@ interface SideNavigationProps {
 
 const SideNavigation = ({
   shadow = "shadow-xl",
-  h = "h-[calc(100vh-65px)]",
+  h = "h-[100vh]",
   p = "p-4",
   textColor = "text-white",
   bgColor = "bg-black",
@@ -38,13 +47,8 @@ const SideNavigation = ({
   gap = "gap-2",
   bgHover = "hover:bg-white/10",
   burgerMenuMove = true,
-  linkList = [
-    { label: "Home", link: "/", icon: <HomeIcon className="h-6 w-6 text-white" /> },
-    { label: "Settings", link: "/", icon: <Cog6ToothIcon className="h-6 w-6 text-white" /> },
-    { label: "Files", link: "/", icon: <FolderIcon className="h-6 w-6 text-white" /> },
-    { label: "Messages", link: "/", icon: <EnvelopeIcon className="h-6 w-6 text-white" /> },
-  ],
-  endContent = { label: "Some User", link: "/", icon: <UserIcon className="h-6 w-6 text-black" /> },
+  linkList = sampleListLinks,
+  endContent = sampleEndContent,
 }: SideNavigationProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -166,3 +170,4 @@ const BurgerMenu = ({ onClick, isOpen, burgerMenuColor }: BurgerMenuProps) => {
     </button>
   );
 };
+
